@@ -1,24 +1,51 @@
 import express from 'express'
+import cors from 'cors'
+import { ApolloServer, gql, IResolvers } from 'apollo-server-express'
 
-const PORT = 3000
-const app: express.Express = express()
+const app = express()
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
+app.use(cors())
+
+interface User {
+  id: string
+  username: string
+}
+interface Users {
+  [key: string]: User
+}
+
+const users: Users = {
+  '1': { id: '1', username: 'mkubara' },
+  '2': { id: '2', username: 'suzukalight' },
+}
+
+const schema = gql`
+  type Query {
+    me: User
+    users: [User!]
+    user(id: ID!): User
+  }
+
+  type User {
+    id: ID!
+    username: String!
+  }
+`
+
+const resolvers: IResolvers = {
+  Query: {
+    users: () => Object.values(users),
+    user: ({ id }) => users[id] || null,
+  },
+}
+
+const server = new ApolloServer({
+  typeDefs: schema,
+  resolvers,
 })
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+server.applyMiddleware({ app, path: '/graphql' })
 
-const router: express.Router = express.Router()
-router.get('/api/getTest', (req: express.Request, res: express.Response) => {
-  res.send(req.query)
+app.listen({ port: 3000 }, () => {
+  console.log('server on http://localhost:3000/graphql')
 })
-router.post('/api/postTest', (req: express.Request, res: express.Response) => {
-  res.send(req.body)
-})
-app.use(router)
-
-app.listen(PORT, () => console.log('Listern on port ' + PORT))

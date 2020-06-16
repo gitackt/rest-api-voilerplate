@@ -6,6 +6,7 @@ apollo api
 
 ```
 brew install yarn hivemind
+ln -s .env.sample .env
 ```
 
 ## Dev

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   api:
     build:
@@ -11,3 +11,18 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_ROOT_HOST=%
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data_dev:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
+
+volumes:
+  mysql_data_dev:

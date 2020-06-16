@@ -1,6 +1,7 @@
-FROM node:12
-WORKDIR /usr/src/app
+FROM node:13
+WORKDIR /app
 
 COPY package*.json ./
 RUN yarn install
-COPY . .
+
+EXPOSE 3000
