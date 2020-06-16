@@ -1,0 +1,8 @@
+{
+  "name": "poifull",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "@gitackt",
+  "license": "MIT",
+  "private": true
+}
