@@ -9,7 +9,7 @@ brew install yarn hivemind
 ln -s .env.sample .env
 ```
 
-## Dev
+## Server
 
 ### Build image
 
@@ -45,4 +45,12 @@ docker-compose down
 
 ```
 docker-compose down -v
+```
+
+## DB
+
+### Create Migration
+
+```
+typeorm migration:create -n <migrations-name>
 ```
