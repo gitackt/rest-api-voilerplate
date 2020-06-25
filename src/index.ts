@@ -1,25 +1,31 @@
-import 'reflect-metadata'
-import { createConnection } from 'typeorm'
-import express from 'express'
-import cors from 'cors'
+// Apollo
 import { ApolloServer, gql, IResolvers } from 'apollo-server-express'
 
-import { User } from './entity/User'
+// Express
+import express from 'express'
+import cors from 'cors'
+
+// TypeORM
+import { createConnection } from 'typeorm'
+import 'reflect-metadata'
+
+// Models
+import { User } from './models/User'
+
+// Constants
+import { PORT } from './constants'
+
+const startExpressServer = (server: ApolloServer) => {
+  const message = `server on http://localhost:${PORT}/graphql`
+  const app = express()
+  app.use(cors())
+  server.applyMiddleware({ app, path: '/graphql' })
+  app.listen({ port: PORT }, () => console.log(message))
+}
 
 createConnection()
   .then(async (connection) => {
-    console.log('Inserting a new user into the database...')
-    const user = new User()
-    user.firstName = 'Timber'
-    user.lastName = 'Saw'
-    user.age = 25
-    await connection.manager.save(user)
-
     const users = await connection.manager.find(User)
-
-    const app = express()
-
-    app.use(cors())
 
     const schema = gql`
       type Query {
@@ -45,10 +51,6 @@ createConnection()
       resolvers,
     })
 
-    server.applyMiddleware({ app, path: '/graphql' })
-
-    app.listen({ port: 3000 }, () => {
-      console.log('server on http://localhost:3000/graphql')
-    })
+    startExpressServer(server)
   })
   .catch((error) => console.log(error))
