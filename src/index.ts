@@ -1,5 +1,7 @@
 // Apollo
-import { ApolloServer, gql, IResolvers } from 'apollo-server-express'
+import { ApolloServer } from 'apollo-server-express'
+import { typeDefs } from './scheme'
+import { createResolvers } from './resolver'
 
 // Express
 import express from 'express'
@@ -8,9 +10,6 @@ import cors from 'cors'
 // TypeORM
 import { createConnection } from 'typeorm'
 import 'reflect-metadata'
-
-// Models
-import { User } from './models/User'
 
 // Constants
 import { PORT } from './constants'
@@ -25,32 +24,9 @@ const startExpressServer = (server: ApolloServer) => {
 
 createConnection()
   .then(async (connection) => {
-    const users = await connection.manager.find(User)
-
-    const schema = gql`
-      type Query {
-        users: [User!]
-      }
-
-      type User {
-        id: ID!
-        firstName: String
-        lastName: String
-        age: ID
-      }
-    `
-
-    const resolvers: IResolvers = {
-      Query: {
-        users: () => Object.values(users),
-      },
-    }
-
-    const server = new ApolloServer({
-      typeDefs: schema,
-      resolvers,
-    })
-
+    const resolver = createResolvers(connection)
+    const options = { typeDefs, resolver }
+    const server = new ApolloServer(options)
     startExpressServer(server)
   })
   .catch((error) => console.log(error))
