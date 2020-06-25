@@ -1,6 +1,12 @@
-# Apollo-TypeORM-Api-server-Voilerplate
+# Apollo-TypeORM-Api-Voilerplate
 
-apollo api
+This is a boilerplate for an API server that uses apollo graphQL and typeORM in a Docker container.
+
+- Language: Typescript
+- GraphQL: Apollo
+- Server: Express
+- ORM: TypeORM
+- Database: MySQL
 
 ## Setup
 
