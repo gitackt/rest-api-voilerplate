@@ -10,7 +10,7 @@ import { usersQuery } from './resolvers/query/users'
 export const createResolvers = (connection: Connection) => {
   const resolvers: IResolvers = {
     Query: {
-      users: () => usersQuery(connection),
+      users: async () => await usersQuery(connection),
     },
   }
   return resolvers
