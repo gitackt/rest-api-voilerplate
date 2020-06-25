@@ -1,11 +1,11 @@
-# poifull
+# Apollo-TypeORM-Api-server-Voilerplate
 
 apollo api
 
 ## Setup
 
 ```
-brew install yarn hivemind
+brew install yarn
 ln -s .env.sample .env
 ```
 
@@ -47,10 +47,10 @@ docker-compose down
 docker-compose down -v
 ```
 
-## DB
+## Container
 
-### Create Migration
+### Exec
 
 ```
-typeorm migration:create -n <migrations-name>
+ docker exec -it <container-id> bash
 ```
