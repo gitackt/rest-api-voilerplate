@@ -10,7 +10,7 @@ require('dotenv').config()
 const options: ConnectionOptions = {
   type: 'mysql',
   host: 'db',
-  port: 3306,
+  port: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,

@@ -12,9 +12,16 @@ This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/
 
 ## First Setup
 
+```env
+TZ=Asia/Tokyo
+DB_NAME=
+DB_USERNAME=
+DB_PASSWORD=
+DB_PORT=
+```
+
 ```shell
 brew install yarn
-ln -s .env.sample .env
 docker-compose up --build
 ```
 
