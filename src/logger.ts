@@ -15,5 +15,6 @@ export const sendLog = (logType: LogType, data: any) => {
     logType,
     timeStamp: new Date().getTime(),
   }
+  // Send logs to cloud storage, s3, stdout...
   console.log(log)
 }
