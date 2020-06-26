@@ -1,21 +1,22 @@
 // Apollo
-import { ApolloServer } from 'apollo-server-express'
-import { typeDefs } from './scheme'
-import { createResolvers } from './resolver'
+import { ApolloServer, gql } from 'apollo-server-express'
+import fs from 'fs'
+import path from 'path'
+import { createResolvers } from './api/resolver'
 
 // Express
 import express from 'express'
 import cors from 'cors'
 
 // TypeORM
-import { createConnection } from 'typeorm'
+import { createConnection, ConnectionOptions } from 'typeorm'
 import 'reflect-metadata'
 
 // Constants
 import { PORT } from './constants'
 
 // Logger
-import { DBQueryLogger, graphqlQueryLogger } from './logger'
+import { DatabaseQueryLogger, graphqlQueryLogger } from './logger'
 
 require('dotenv').config()
 
@@ -27,26 +28,29 @@ const startExpressServer = (server: ApolloServer) => {
   app.listen({ port: PORT }, () => console.log(message))
 }
 
-createConnection({
+const options: ConnectionOptions = {
   type: 'mysql',
   host: 'db',
   port: 3306,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  synchronize: true,
+  synchronize: false,
   logging: ['query', 'error'],
-  logger: new DBQueryLogger(),
-  entities: ['src/models/**/*.ts'],
-  migrations: ['src/migration/**/*.ts'],
-  subscribers: ['src/subscriber/**/*.ts'],
+  logger: new DatabaseQueryLogger(),
+  entities: ['src/model/**/*.ts'],
+  migrations: ['src/storage/migration/**/*.ts'],
+  subscribers: ['src/storage/subscriber/**/*.ts'],
   cli: {
-    entitiesDir: 'src/models',
-    migrationsDir: 'src/migration',
-    subscribersDir: 'src/subscriber',
+    entitiesDir: 'src/model',
+    migrationsDir: 'src/storage/migration',
+    subscribersDir: 'src/storage/subscriber',
   },
-})
+}
+
+createConnection(options)
   .then(async (connection) => {
+    const typeDefs = gql(fs.readFileSync(path.resolve(__dirname, './schema.gql'), 'utf8'))
     const resolvers = createResolvers(connection)
     const options = { typeDefs, resolvers, plugins: [graphqlQueryLogger] }
     const server = new ApolloServer(options)

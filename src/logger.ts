@@ -1,4 +1,4 @@
-import { Logger, QueryRunner } from 'typeorm'
+import { Logger } from 'typeorm'
 
 interface DBQuery {
   query: string
@@ -7,30 +7,19 @@ interface DBQuery {
   time?: number
 }
 
-export class DBQueryLogger implements Logger {
-  logQuery(query: string, parameters?: any[], queryRunner?: QueryRunner) {
-    const log: DBQuery = {
-      query,
-      parameters,
-    }
+export class DatabaseQueryLogger implements Logger {
+  logQuery(query: string, parameters?: any[]) {
+    const log: DBQuery = { query, parameters }
     console.log(log)
   }
 
-  logQueryError(error: string, query: string, parameters?: any[], queryRunner?: QueryRunner) {
-    const log: DBQuery = {
-      query,
-      parameters,
-      error,
-    }
+  logQueryError(error: string, query: string, parameters?: any[]) {
+    const log: DBQuery = { query, parameters, error }
     console.log(log)
   }
 
-  logQuerySlow(time: number, query: string, parameters?: any[], queryRunner?: QueryRunner) {
-    const log: DBQuery = {
-      query,
-      parameters,
-      time,
-    }
+  logQuerySlow(time: number, query: string, parameters?: any[]) {
+    const log: DBQuery = { query, parameters, time }
     console.log(log)
   }
 

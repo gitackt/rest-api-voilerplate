@@ -5,7 +5,7 @@ import { IResolvers } from 'apollo-server-express'
 import { Connection } from 'typeorm'
 
 // Resolvers
-import { usersQuery } from './resolvers/query/users'
+import { usersQuery } from '../storage/resolvers/query/users'
 
 export const createResolvers = (connection: Connection) => {
   const resolvers: IResolvers = {
