@@ -1,5 +1,14 @@
 # Apollo-TypeORM-Api-Voilerplate
 
+[![GitHub issues](https://img.shields.io/github/issues/gitackt/graphql-api-voilerplate?color=%236971ce)](https://github.com/gitackt/graphql-api-voilerplate/issues)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/gitackt/graphql-api-voilerplate?color=%236971ce)](https://github.com/gitackt/graphql-api-voilerplate/issues)
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/gitackt/graphql-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/graphql-api-voilerplate/issues)
+[![GitHub pull-requests closed](https://img.shields.io/github/issues-pr-closed/gitackt/graphql-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/graphql-api-voilerplate/issues)
+[![GitHub forks](https://img.shields.io/github/forks/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/network)
+[![GitHub stars](https://img.shields.io/github/stars/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
+[![GitHub contributors](https://img.shields.io/github/contributors/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
+[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
+
 This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/ 'GraphQL') in a [Docker](https://www.docker.com/ 'Docker') container.
 
 - Language: [Typescript](https://www.typescriptlang.org/ 'Typescript')
@@ -14,15 +23,11 @@ This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/
 
 ### ① Create .env
 
+See `.env.sample`.
+
 ```shell
 vi .env
 ```
-
-- `TZ=Asia/Tokyo`
-- `DB_NAME=`
-- `DB_USERNAME=`
-- `DB_PASSWORD=`
-- `DB_PORT=`
 
 ### ② Create container
 
@@ -38,7 +43,7 @@ docker-compose up --build
 <details>
 
 <summary>
-① Server 
+Server 
 </summary>
 
 ## ① Server
@@ -92,7 +97,7 @@ docker-compose down -v
 <details>
 
 <summary>
-② Migration
+Migration
 </summary>
 
 ## ② Migration

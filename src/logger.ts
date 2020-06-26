@@ -1,5 +1,5 @@
 interface Log {
-  data: any
+  data: string
   logType: LogType
   timeStamp: number
 }
@@ -9,9 +9,9 @@ export enum LogType {
   DatabaseQuery = 'DatabaseQuery',
 }
 
-export const sendLog = (logType: LogType, data: any) => {
+export const sendLog = (logType: LogType, rowData: any) => {
   const log: Log = {
-    data: JSON.stringify(data),
+    data: JSON.stringify(rowData),
     logType,
     timeStamp: new Date().getTime(),
   }
