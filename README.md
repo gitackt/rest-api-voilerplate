@@ -18,8 +18,6 @@ This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/
 vi .env
 ```
 
-`.env`
-
 - `TZ=Asia/Tokyo`
 - `DB_NAME=`
 - `DB_USERNAME=`
