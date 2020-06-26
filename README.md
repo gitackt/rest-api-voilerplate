@@ -12,6 +12,14 @@ This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/
 
 ## First Setup
 
+### Create .env
+
+```shell
+vi .env
+```
+
+`.env`
+
 ```env
 TZ=Asia/Tokyo
 DB_NAME=
@@ -20,6 +28,8 @@ DB_PASSWORD=
 DB_PORT=
 ```
 
+### Create container
+
 ```shell
 brew install yarn
 docker-compose up --build
@@ -27,7 +37,7 @@ docker-compose up --build
 
 ---
 
-## Server
+## ① Server
 
 ### Build image
 
@@ -73,15 +83,15 @@ docker-compose down -v
 
 ---
 
-## Migration
+## ② Migration
 
-### Exec app container
+### 1 - Exec app container
 
 ```shell
 docker-compose exec api bash
 ```
 
-### Generate Migrations
+### 2 - Generate Migrations
 
 (In app container)
 
@@ -89,7 +99,7 @@ docker-compose exec api bash
 ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n  <migration-name>
 ```
 
-### Run Migrations
+### 3 - Run Migrations
 
 (In app container)
 
