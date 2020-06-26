@@ -12,7 +12,7 @@ import cors from 'cors'
 import { Connection } from 'typeorm'
 
 // Logger
-import { graphqlQueryLogger } from './serverLogger'
+import { graphqlContextLogger, Context } from './serverLogger'
 
 // Constants
 import { PORT } from '../constants'
@@ -28,7 +28,14 @@ const startExpressServer = (server: ApolloServer) => {
 export const graphqlServer = (connection: Connection) => {
   const typeDefs = gql(fs.readFileSync(path.resolve(__dirname, './schema.gql'), 'utf8'))
   const resolvers = createResolvers(connection)
-  const options = { typeDefs, resolvers, plugins: [graphqlQueryLogger] }
+  const options = {
+    typeDefs,
+    resolvers,
+    context: async (context: Context) => {
+      graphqlContextLogger(context)
+      return context
+    },
+  }
   const server = new ApolloServer(options)
   startExpressServer(server)
 }

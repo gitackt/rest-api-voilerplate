@@ -5,7 +5,8 @@ interface Log {
 }
 
 export enum LogType {
-  GraphqlQuery = 'GraphqlQuery',
+  GraphqlContext = 'GraphqlContext',
+  GraphqlContextError = 'GraphqlContextError',
   DatabaseQuery = 'DatabaseQuery',
 }
 
