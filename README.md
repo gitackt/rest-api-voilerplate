@@ -1,62 +1,91 @@
 # Apollo-TypeORM-Api-Voilerplate
 
-This is a boilerplate for an API server that uses apollo graphQL and typeORM in a Docker container.
+This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/ 'GraphQL') in a [Docker](https://www.docker.com/ 'Docker') container.
 
-- Language: Typescript
-- GraphQL: Apollo
-- Server: Express
-- ORM: TypeORM
-- Database: MySQL
+- Language: [Typescript](https://www.typescriptlang.org/ 'Typescript')
+- GraphQL: [Apollo](https://www.apollographql.com/ 'Apollo')
+- Server: [Express](https://expressjs.com/ja/ 'Express')
+- ORM: [TypeORM](https://typeorm.io/#/ 'TypeORM')
+- Database: [MySQL](https://www.mysql.com/jp/ 'MySQL')
 
-## Setup
+---
 
-```
+## First Setup
+
+```shell
 brew install yarn
 ln -s .env.sample .env
+docker-compose up --build
 ```
+
+---
 
 ## Server
 
 ### Build image
 
-```
+```shell
 docker-compose build
 ```
 
 ### Start server
 
-```
+```shell
 docker-compose up
 ```
 
 ### Start server（with build）
 
-```
+```shell
 docker-compose up --build
 ```
 
 ### Start server（deamon）
 
+```shell
+docker-compose up -d
 ```
+
+### Start server（deamon with build）
+
+```shell
 docker-compose up --build -d
 ```
 
 ### Stop server
 
-```
+```shell
 docker-compose down
 ```
 
 ### Stop server (remove volumes)
 
-```
+```shell
 docker-compose down -v
 ```
 
-## Container
+---
 
-### Exec
+## Migration
 
+### Exec app container
+
+```shell
+docker-compose exec api bash
 ```
-docker-compose exec <service_name> bash
+
+### Generate Migrations
+
+(In app container)
+
+```shell
+./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n  <migration-name>
+```
+
+### Run Migrations
+
+(In app container)
+
+```shell
+./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
 ```
