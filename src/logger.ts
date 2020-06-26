@@ -1,38 +1,19 @@
-import { Logger } from 'typeorm'
-
-interface DBQuery {
-  query: string
-  parameters?: any[]
-  error?: string
-  time?: number
+interface Log {
+  data: any
+  logType: LogType
+  timeStamp: number
 }
 
-export class DatabaseQueryLogger implements Logger {
-  logQuery(query: string, parameters?: any[]) {
-    const log: DBQuery = { query, parameters }
-    console.log(log)
-  }
-
-  logQueryError(error: string, query: string, parameters?: any[]) {
-    const log: DBQuery = { query, parameters, error }
-    console.log(log)
-  }
-
-  logQuerySlow(time: number, query: string, parameters?: any[]) {
-    const log: DBQuery = { query, parameters, time }
-    console.log(log)
-  }
-
-  logSchemaBuild() {}
-  logMigration() {}
-  log() {}
+export enum LogType {
+  GraphqlQuery = 'GraphqlQuery',
+  DatabaseQuery = 'DatabaseQuery',
 }
 
-export const graphqlQueryLogger = {
-  requestDidStart(requestContext: any) {
-    const res = requestContext.request.query
-    if (!res.includes('query IntrospectionQuery')) {
-      console.log(res)
-    }
-  },
+export const sendLog = (logType: LogType, data: any) => {
+  const log: Log = {
+    data: JSON.stringify(data),
+    logType,
+    timeStamp: new Date().getTime(),
+  }
+  console.log(log)
 }

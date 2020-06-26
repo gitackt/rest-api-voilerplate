@@ -3,7 +3,7 @@ import { createConnection, ConnectionOptions } from 'typeorm'
 import 'reflect-metadata'
 
 // Logger
-import { DatabaseQueryLogger } from '../logger'
+import { DatabaseQueryLogger } from './dbLogger'
 
 require('dotenv').config()
 

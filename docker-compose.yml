@@ -14,7 +14,10 @@ services:
   db:
     image: mysql:5.7
     environment:
+      - TZ=$TZ
       - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASSWORD
       - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_ROOT_HOST=%
@@ -22,8 +25,8 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - mysql_data_dev:/var/lib/mysql
+      - db_volumes:/var/lib/mysql
       - ./mysql/conf.d:/etc/mysql/conf.d
 
 volumes:
-  mysql_data_dev:
+  db_volumes:

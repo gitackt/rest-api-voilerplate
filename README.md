@@ -58,5 +58,5 @@ docker-compose down -v
 ### Exec
 
 ```
- docker exec -it <container-id> bash
+docker-compose exec <service_name> bash
 ```

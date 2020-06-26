@@ -1,7 +1,8 @@
 FROM node:13
+
 WORKDIR /app
 
-COPY package*.json ./
-RUN yarn install
+COPY package.json ./
+COPY yarn.lock ./
 
-EXPOSE 3000
+RUN yarn
