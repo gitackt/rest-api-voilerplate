@@ -7,7 +7,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/network)
 [![GitHub stars](https://img.shields.io/github/stars/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
 [![GitHub contributors](https://img.shields.io/github/contributors/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
-[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
 
 This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/ 'GraphQL') in a [Docker](https://www.docker.com/ 'Docker') container.
 
@@ -125,3 +124,7 @@ docker-compose exec api bash
 ```
 
 </details>
+
+## Licence
+
+[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
