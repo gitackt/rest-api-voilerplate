@@ -10,22 +10,19 @@ export interface Context {
 }
 
 interface GraphqlContext {
-  headers?: string
-  body?: string
-  query?: string
+  headers?: any
+  body?: any
+  query?: any
   error?: string
 }
 
 export const graphqlContextLogger = (context: Context) => {
   try {
-    const headers = JSON.stringify(context.req.headers)
-    const body = JSON.stringify(context.req.body)
-    const query = JSON.stringify(context.req.body.query)
-    if (!body.includes('query IntrospectionQuery')) {
+    if (!JSON.stringify(context.req.body).includes('query IntrospectionQuery')) {
       const params: GraphqlContext = {
-        headers,
-        body,
-        query,
+        headers: context.req.headers,
+        body: context.req.body,
+        query: context.req.body.query,
       }
       sendLog(LogType.GraphqlContext, params)
     }
