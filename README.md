@@ -128,6 +128,14 @@ docker-compose exec api bash
 
 docker-compose up graphQL container & Acceess playground url (http://localhost:3000/graphql )
 
+### Generate type from graphQL schema
+
+You can get typescript type interfaces from graphQL schema file.
+
+```
+yarn codegen
+```
+
 ### Query
 
 ```
@@ -146,12 +154,4 @@ mutation {
     id
   }
 }
-```
-
-### Generate type file from graphQL schema
-
-You can get typescript type interfaces from graphQL schema file. Input `src/api/graphql/schema.graphql` Output `src/api/graphql/graphql.ts`
-
-```
-yarn codegen
 ```
