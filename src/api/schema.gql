@@ -1,10 +1,15 @@
 type Query {
   users: [User!]
+  user(id: ID!): User!
+}
+
+type Mutation {
+  createUser(id: ID!, firstName: String!, lastName: String!, age: Int!): User
 }
 
 type User {
   id: ID!
-  firstName: String
-  lastName: String
-  age: ID
+  firstName: String!
+  lastName: String!
+  age: Int!
 }
