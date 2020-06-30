@@ -2,7 +2,7 @@
 import { Logger } from 'typeorm'
 
 // Logger
-import { sendLog, LogType } from '../logger'
+import { sendLog, LogType } from '@logger/logger'
 
 interface DBQuery {
   query: string

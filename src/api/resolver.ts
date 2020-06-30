@@ -1,6 +1,6 @@
 // Apollo
 import { IResolvers } from 'apollo-server-express'
-import { User } from './graphql/graphql'
+import { User } from '@api/graphql/graphql'
 
 // TypeORM
 import { Connection } from 'typeorm'

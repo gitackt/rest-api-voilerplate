@@ -2,7 +2,7 @@
 import { Request, Response } from 'express'
 
 // Logger
-import { sendLog, LogType } from '../logger'
+import { sendLog, LogType } from '@logger/logger'
 
 export interface Context {
   req: Request
