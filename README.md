@@ -18,9 +18,9 @@ This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/
 
 ---
 
-## First Setup
+## ① First Setup
 
-### ① Create .env
+### Create .env
 
 See `.env.sample`.
 
@@ -28,7 +28,7 @@ See `.env.sample`.
 vi .env
 ```
 
-### ② Create container
+### Create container
 
 The application is launched with [docker-compose](https://docs.docker.com/compose/ 'docker-compose').
 
@@ -37,7 +37,7 @@ brew install yarn
 docker-compose up --build
 ```
 
-### ③ Run test
+## ② Test
 
 The application is tested with [jest](https://jestjs.io/docs/ja/getting-started 'jest').
 
@@ -55,13 +55,7 @@ yarn watch
 
 ---
 
-<details>
-
-<summary>
-Server 
-</summary>
-
-## ① Server
+## ③ Server
 
 ### Build image
 
@@ -105,17 +99,7 @@ docker-compose down
 docker-compose down -v
 ```
 
-</details>
-
----
-
-<details>
-
-<summary>
-Migration
-</summary>
-
-## ② Migration
+## ④ Migration
 
 ### 1 - Exec app container
 
@@ -139,8 +123,6 @@ docker-compose exec api bash
 ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
 ```
 
-</details>
-
-## Licence
+## ⑤ Licence
 
 [![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
