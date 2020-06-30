@@ -12,7 +12,7 @@ import cors from 'cors'
 import { Connection } from 'typeorm'
 
 // Logger
-import { graphqlContextLogger, Context } from '../../logger/app/serverLogger'
+import { graphqlContextLogger, Context } from '@logger/app/serverLogger'
 
 // Constants
 import { PORT } from '../../constants'

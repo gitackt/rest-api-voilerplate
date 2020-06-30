@@ -1,4 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+// TypeORM
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+
+// Models
+import { Post } from '@model/Post'
 
 @Entity()
 export class User {
@@ -6,11 +10,11 @@ export class User {
   id?: string
 
   @Column()
-  firstName?: string
-
-  @Column()
-  lastName?: string
+  name?: string
 
   @Column()
   age?: number
+
+  @OneToMany((type) => Post, (post) => post.user)
+  posts?: Post[]
 }
