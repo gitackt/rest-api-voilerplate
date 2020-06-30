@@ -37,6 +37,12 @@ brew install yarn
 docker-compose up --build
 ```
 
+### ③ Run test
+
+```shell
+yarn test
+```
+
 ---
 
 <details>
