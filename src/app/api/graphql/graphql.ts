@@ -25,12 +25,19 @@ export type QueryUserArgs = {
 export type Mutation = {
   __typename?: 'Mutation';
   createUser?: Maybe<User>;
+  createPost?: Maybe<Post>;
 };
 
 
 export type MutationCreateUserArgs = {
   name: Scalars['String'];
   age: Scalars['Int'];
+};
+
+
+export type MutationCreatePostArgs = {
+  title: Scalars['String'];
+  content: Scalars['String'];
 };
 
 export type User = {
@@ -154,6 +161,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'name' | 'age'>>;
+  createPost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationCreatePostArgs, 'title' | 'content'>>;
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
