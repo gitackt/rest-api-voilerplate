@@ -39,8 +39,18 @@ docker-compose up --build
 
 ### ③ Run test
 
+The application is tested with [jest](https://jestjs.io/docs/ja/getting-started 'jest').
+
+#### test
+
 ```shell
 yarn test
+```
+
+#### test (watch mode)
+
+```shell
+yarn watch
 ```
 
 ---
