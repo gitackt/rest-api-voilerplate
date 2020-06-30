@@ -102,13 +102,13 @@ docker-compose down -v
 
 ## ④ Migration
 
-### 1 - Exec app container
+### Exec app container
 
 ```shell
 docker-compose exec api bash
 ```
 
-### 2 - Generate Migrations
+### Generate Migrations
 
 (In app container)
 
@@ -116,7 +116,7 @@ docker-compose exec api bash
 ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n  <migration-name>
 ```
 
-### 3 - Run Migrations
+### Run Migrations
 
 (In app container)
 
@@ -146,4 +146,12 @@ mutation {
     id
   }
 }
+```
+
+### Generate type file from graphQL schema
+
+You can get typescript type interfaces from graphQL schema file. Input `src/api/graphql/schema.graphql` Output `src/api/graphql/graphql.ts`
+
+```
+yarn codegen
 ```
