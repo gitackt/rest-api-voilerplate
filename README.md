@@ -147,13 +147,3 @@ mutation {
   }
 }
 ```
-
-### ⑥ Contributor
-
-<a href="https://github.com/gitackt/graphql-api-voilerplate/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=gitackt/graphql-api-voilerplate" />
-</a>
-
-<a class="twitter-follow-button"
-  href="https://twitter.com/picos_tackt?lang=ja">
-Follow @picos_tackt</a>
