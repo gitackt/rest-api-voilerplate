@@ -2,7 +2,7 @@
 import { Connection } from 'typeorm'
 
 // Models
-import { User } from '@model/User'
+import { User } from '@src/app/model/User'
 
 export const createUserMutation = async (
   connection: Connection,

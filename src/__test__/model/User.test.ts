@@ -1,4 +1,4 @@
-import { User } from '../../model/User'
+import { User } from '../../app/model/User'
 
 describe('User model test', () => {
   it('Create User', () => {

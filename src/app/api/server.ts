@@ -2,7 +2,7 @@
 import { ApolloServer, gql } from 'apollo-server-express'
 import fs from 'fs'
 import path from 'path'
-import { createResolvers } from '@api/resolver'
+import { createResolvers } from '@src/app/api/resolver'
 
 // Express
 import express from 'express'
@@ -12,10 +12,10 @@ import cors from 'cors'
 import { Connection } from 'typeorm'
 
 // Logger
-import { graphqlContextLogger, Context } from '../logger/layer/serverLogger'
+import { graphqlContextLogger, Context } from '../../logger/app/serverLogger'
 
 // Constants
-import { PORT } from '../constants'
+import { PORT } from '../../constants'
 
 const message = `server on http://localhost:${PORT}/graphql`
 
