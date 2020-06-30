@@ -7,6 +7,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/network)
 [![GitHub stars](https://img.shields.io/github/stars/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
 [![GitHub contributors](https://img.shields.io/github/contributors/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
+[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
 
 This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/ 'GraphQL') in a [Docker](https://www.docker.com/ 'Docker') container.
 
@@ -123,6 +124,36 @@ docker-compose exec api bash
 ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
 ```
 
-## ⑤ Licence
+### ⑤ GraphQL
 
-[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
+docker-compose up graphQL container & Acceess playground url (http://localhost:3000/graphql )
+
+### Query
+
+```
+query {
+  users {
+      id
+  }
+}
+```
+
+### Mutation
+
+```
+mutation {
+  createUser(id: 1, firstName: "aa", lastName: "ss", age: 46) {
+    id
+  }
+}
+```
+
+### ⑥ Contributor
+
+<a href="https://github.com/gitackt/graphql-api-voilerplate/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=gitackt/graphql-api-voilerplate" />
+</a>
+
+<a class="twitter-follow-button"
+  href="https://twitter.com/picos_tackt?lang=ja">
+Follow @picos_tackt</a>
