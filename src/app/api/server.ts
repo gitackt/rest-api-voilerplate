@@ -2,7 +2,7 @@
 import { ApolloServer, gql } from 'apollo-server-express'
 import fs from 'fs'
 import path from 'path'
-import { createResolvers } from '@src/app/api/resolver'
+import { createResolvers } from '@api/resolver'
 
 // Express
 import express from 'express'

@@ -2,6 +2,6 @@
 import { Connection } from 'typeorm'
 
 // Models
-import { Post } from '@src/app/model/Post'
+import { Post } from '@model/Post'
 
 export const postsQuery = (connection: Connection) => connection.manager.find(Post)

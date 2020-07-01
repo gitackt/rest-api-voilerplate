@@ -2,7 +2,7 @@
 import { Connection } from 'typeorm'
 
 // Models
-import { Post } from '@src/app/model/Post'
+import { Post } from '@model/Post'
 
 export const createPostMutation = async (connection: Connection, title: string, content: string) => {
   const post = new Post()

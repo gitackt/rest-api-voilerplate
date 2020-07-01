@@ -132,23 +132,23 @@ docker-compose up graphQL container & Acceess playground url (http://localhost:3
 
 You can get typescript type interfaces from graphQL schema file.
 
-```
+```shell
 yarn codegen
 ```
 
 ### Query
 
-```
+```graphql
 query {
   users {
-      id
+    id
   }
 }
 ```
 
 ### Mutation
 
-```
+```graphql
 mutation {
   createUser(id: 1, firstName: "aa", lastName: "ss", age: 46) {
     id
