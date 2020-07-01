@@ -124,7 +124,7 @@ docker-compose exec api bash
 ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
 ```
 
-### ⑤ GraphQL
+## ⑤ GraphQL
 
 docker-compose up graphQL container & Acceess playground url (http://localhost:3000/graphql )
 
