@@ -1,8 +1,15 @@
-FROM node:13
+FROM golang:latest
 
-WORKDIR /app
+LABEL maintainer "tackt"
+WORKDIR /go/src
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY go.mod .
+COPY go.sum .
 
-RUN yarn
+ENV GO111MODULE=on
+RUN go mod download
+
+COPY . .
+
+EXPOSE 3000
+CMD ["go", "run", "main.go"]

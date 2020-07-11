@@ -1,21 +1,20 @@
-# Apollo-TypeORM-Api-Voilerplate
+# Golang-REST-Api-Voilerplate
 
-[![GitHub issues](https://img.shields.io/github/issues/gitackt/graphql-api-voilerplate?color=%236971ce)](https://github.com/gitackt/graphql-api-voilerplate/issues)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/gitackt/graphql-api-voilerplate?color=%236971ce)](https://github.com/gitackt/graphql-api-voilerplate/issues)
-[![GitHub issues-closed](https://img.shields.io/github/issues-closed/gitackt/graphql-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/graphql-api-voilerplate/issues)
-[![GitHub pull-requests closed](https://img.shields.io/github/issues-pr-closed/gitackt/graphql-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/graphql-api-voilerplate/issues)
-[![GitHub forks](https://img.shields.io/github/forks/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/network)
-[![GitHub stars](https://img.shields.io/github/stars/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
-[![GitHub contributors](https://img.shields.io/github/contributors/gitackt/graphql-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/graphql-api-voilerplate/stargazers)
-[![GitHub license](https://img.shields.io/github/license/gitackt/graphql-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/graphql-api-voilerplate/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/gitackt/rest-api-voilerplate?color=%236971ce)](https://github.com/gitackt/rest-api-voilerplate/issues)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/gitackt/rest-api-voilerplate?color=%236971ce)](https://github.com/gitackt/rest-api-voilerplate/issues)
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/gitackt/rest-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/rest-api-voilerplate/issues)
+[![GitHub pull-requests closed](https://img.shields.io/github/issues-pr-closed/gitackt/rest-api-voilerplate?color=%23ce6990)](https://github.com/gitackt/rest-api-voilerplate/issues)
+[![GitHub forks](https://img.shields.io/github/forks/gitackt/rest-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/rest-api-voilerplate/network)
+[![GitHub stars](https://img.shields.io/github/stars/gitackt/rest-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/rest-api-voilerplate/stargazers)
+[![GitHub contributors](https://img.shields.io/github/contributors/gitackt/rest-api-voilerplate?color=%2369cebf)](https://github.com/gitackt/rest-api-voilerplate/stargazers)
+[![GitHub license](https://img.shields.io/github/license/gitackt/rest-api-voilerplate?color=%23ccb868)](https://github.com/gitackt/rest-api-voilerplate/blob/master/LICENSE)
 
-This is a boilerplate for an API server that uses [GraphQL](https://graphql.org/ 'GraphQL') in a [Docker](https://www.docker.com/ 'Docker') container.
+This is a boilerplate for an API server that uses [rest](https://rest.org/ "rest") in a [Docker](https://www.docker.com/ "Docker") container.
 
-- Language: [Typescript](https://www.typescriptlang.org/ 'Typescript')
-- GraphQL: [Apollo](https://www.apollographql.com/ 'Apollo')
-- Server: [Express](https://expressjs.com/ja/ 'Express')
-- ORM: [TypeORM](https://typeorm.io/#/ 'TypeORM')
-- Database: [MySQL](https://www.mysql.com/jp/ 'MySQL')
+- Language: [Go](https://golang.org/ "Go")
+- Server: [Chi](https://github.com/go-chi/chi "Chi")
+- ORM: [SQLVoiler](https://github.com/volatiletech/sqlboiler "SQLVoiler")
+- Database: [MySQL](https://www.mysql.com/jp/ "MySQL")
 
 ---
 
@@ -31,30 +30,15 @@ vi .env
 
 ### Create container
 
-The application is launched with [docker-compose](https://docs.docker.com/compose/ 'docker-compose').
+The application is launched with [docker-compose](https://docs.docker.com/compose/ "docker-compose").
 
 ```shell
-brew install yarn
 docker-compose up --build
 ```
 
 ## ② Test
 
-The application is tested with [jest](https://jestjs.io/docs/ja/getting-started 'jest').
-
-#### test
-
-```shell
-yarn test
-```
-
-#### test (watch mode)
-
-```shell
-yarn watch
-```
-
----
+The application is tested with [jest](https://jestjs.io/docs/ja/getting-started "jest").
 
 ## ③ Server
 
@@ -98,60 +82,4 @@ docker-compose down
 
 ```shell
 docker-compose down -v
-```
-
-## ④ Migration
-
-### Exec app container
-
-```shell
-docker-compose exec api bash
-```
-
-### Generate Migrations
-
-(In app container)
-
-```shell
-./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n  <migration-name>
-```
-
-### Run Migrations
-
-(In app container)
-
-```shell
-./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
-```
-
-## ⑤ GraphQL
-
-docker-compose up graphQL container & Acceess playground url (http://localhost:3000/graphql )
-
-### Generate type from graphQL schema
-
-You can get typescript type interfaces from graphQL schema file.
-
-```shell
-yarn codegen
-```
-
-### Query
-
-```graphql
-query {
-  users {
-    id
-  }
-}
-```
-
-### Mutation
-
-```graphql
-mutation {
-  createUser(id: 1, firstName: "aa", lastName: "ss", age: 46) {
-    id
-  }
-}
 ```
