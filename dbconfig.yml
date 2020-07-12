@@ -1,0 +1,4 @@
+mysql:
+  dialect: mysql
+  datasource: ${DB_USERNAME}:${DB_PASSWORD}@tcp(db:${DB_PORT})/${DB_NAME}?parseTime=true
+  dir: migrations
