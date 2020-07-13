@@ -26,6 +26,7 @@ See `.env.sample`.
 
 ```shell
 vi .env
+export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 ### Create container
@@ -82,4 +83,24 @@ docker-compose down
 
 ```shell
 docker-compose down -v
+```
+
+## ③ DB Migrations
+
+### Create migration
+
+```shell
+sql-migrate new <name>
+```
+
+### Execute migration
+
+```shell
+sql-migrate up
+```
+
+### Rollback migration
+
+```shell
+sql-migrate down
 ```
